@@ -24,6 +24,7 @@ import org.acme.vehiclerouting.domain.Vehicle;
 import org.acme.vehiclerouting.domain.VehicleRoutePlan;
 import org.acme.vehiclerouting.domain.Visit;
 import org.acme.vehiclerouting.domain.geo.HaversineDrivingTimeCalculator;
+import org.acme.vehiclerouting.domain.geo.RoadSnap;
 import org.acme.vehiclerouting.rest.VehicleRouteDemoResource;
 
 /**
@@ -253,6 +254,18 @@ public final class FindingEnricher {
         return plan;
     }
 
+    /** The road-snapping correction of a location, or null if it was not snapped (see RoadSnap). */
+    private static Map<String, Object> describe(RoadSnap snap) {
+        if (snap == null) {
+            return null;
+        }
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("original", List.of(snap.originalLocation().getLatitude(), snap.originalLocation().getLongitude()));
+        d.put("distanceMeters", snap.distanceMeters());
+        d.put("roadName", snap.roadName());
+        return d;
+    }
+
     private Map<String, Object> describe(VehicleRoutePlan plan, String id, String jobId) {
         String[] parts = id.split(":");
         Map<String, Object> d = new LinkedHashMap<>();
@@ -265,6 +278,7 @@ public final class FindingEnricher {
                 d.put("type", "visit");
                 d.put("name", visit.getName());
                 d.put("location", List.of(visit.getLocation().getLatitude(), visit.getLocation().getLongitude()));
+                d.put("locationSnap", describe(visit.getLocationSnap()));
                 d.put("demand", visit.getDemand());
                 d.put("timeWindow", List.of(String.valueOf(visit.getMinStartTime()), String.valueOf(visit.getMaxEndTime())));
                 d.put("serviceMinutes", visit.getServiceDuration().toMinutes());
@@ -288,6 +302,7 @@ public final class FindingEnricher {
                 d.put("capacity", vehicle.getCapacity());
                 d.put("totalDemand", vehicle.getTotalDemand());
                 d.put("home", List.of(vehicle.getHomeLocation().getLatitude(), vehicle.getHomeLocation().getLongitude()));
+                d.put("homeSnap", describe(vehicle.getHomeLocationSnap()));
                 d.put("departureTime", String.valueOf(vehicle.getDepartureTime()));
                 d.put("arrivalTime", String.valueOf(vehicle.arrivalTime()));
                 d.put("totalDrivingTimeSeconds", vehicle.getTotalDrivingTimeSeconds());

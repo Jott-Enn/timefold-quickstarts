@@ -1,4 +1,4 @@
-function addNewVisit(id, lat, lng, map, marker) {
+function addNewVisit(id, lat, lng, map, marker, snap) {
     $('#newVisitModal').modal('show')
     const visitModalContent = $("#newVisitModalContent");
     visitModalContent.children().remove();
@@ -25,6 +25,7 @@ function addNewVisit(id, lat, lng, map, marker) {
         `          <input type='text' disabled class='form-control' id='inputLongitude' aria-describedby='inputLongitude' value='${lng}'>` +
         "        </div>" +
         "      </div>" +
+        `      ${roadSnapNote(snap)}` +
         "    </div>";
     visitForm += "<div class='form-group'>" +
         "      <div class='row'>" +

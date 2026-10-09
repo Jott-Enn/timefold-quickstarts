@@ -11,6 +11,8 @@ import ai.timefold.solver.core.api.domain.variable.PreviousElementShadowVariable
 import ai.timefold.solver.core.api.domain.variable.ShadowSources;
 import ai.timefold.solver.core.api.domain.variable.ShadowVariable;
 
+import org.acme.vehiclerouting.domain.geo.RoadSnap;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,6 +27,8 @@ public class Visit implements LocationAware {
     private String id;
     private String name;
     private Location location;
+    /** Set when {@link #location} was moved onto the nearest road; null if it was not. */
+    private RoadSnap locationSnap;
     private int demand;
     private LocalDateTime minStartTime;
     private LocalDateTime maxEndTime;
@@ -72,6 +76,14 @@ public class Visit implements LocationAware {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public RoadSnap getLocationSnap() {
+        return locationSnap;
+    }
+
+    public void setLocationSnap(RoadSnap locationSnap) {
+        this.locationSnap = locationSnap;
     }
 
     public int getDemand() {

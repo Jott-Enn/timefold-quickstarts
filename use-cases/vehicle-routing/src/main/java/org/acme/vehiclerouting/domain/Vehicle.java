@@ -8,6 +8,8 @@ import ai.timefold.solver.core.api.domain.entity.PlanningEntity;
 import ai.timefold.solver.core.api.domain.common.PlanningId;
 import ai.timefold.solver.core.api.domain.variable.PlanningListVariable;
 
+import org.acme.vehiclerouting.domain.geo.RoadSnap;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,6 +25,8 @@ public class Vehicle implements LocationAware {
     private int capacity;
     @JsonIdentityReference
     private Location homeLocation;
+    /** Set when {@link #homeLocation} was moved onto the nearest road; null if it was not. */
+    private RoadSnap homeLocationSnap;
 
     private LocalDateTime departureTime;
 
@@ -63,6 +67,14 @@ public class Vehicle implements LocationAware {
 
     public void setHomeLocation(Location homeLocation) {
         this.homeLocation = homeLocation;
+    }
+
+    public RoadSnap getHomeLocationSnap() {
+        return homeLocationSnap;
+    }
+
+    public void setHomeLocationSnap(RoadSnap homeLocationSnap) {
+        this.homeLocationSnap = homeLocationSnap;
     }
 
     public LocalDateTime getDepartureTime() {

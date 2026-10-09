@@ -13,6 +13,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -22,6 +23,7 @@ import org.acme.vehiclerouting.domain.Location;
 import org.acme.vehiclerouting.domain.Vehicle;
 import org.acme.vehiclerouting.domain.VehicleRoutePlan;
 import org.acme.vehiclerouting.domain.Visit;
+import org.acme.vehiclerouting.domain.geo.RoadSnapper;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -42,6 +44,13 @@ public class VehicleRouteDemoResource {
     private static final LocalTime MORNING_WINDOW_END = LocalTime.of(12, 0);
     private static final LocalTime AFTERNOON_WINDOW_START = LocalTime.of(13, 0);
     private static final LocalTime AFTERNOON_WINDOW_END = LocalTime.of(18, 0);
+
+    private final RoadSnapper roadSnapper;
+
+    @Inject
+    public VehicleRouteDemoResource(RoadSnapper roadSnapper) {
+        this.roadSnapper = roadSnapper;
+    }
 
     public enum DemoData {
         PHILADELPHIA(2, 55, 6, LocalTime.of(7, 30),
@@ -206,6 +215,9 @@ public class VehicleRouteDemoResource {
         List<Visit> visits = Stream.generate(visitSupplier)
                 .limit(demoData.visitCount)
                 .collect(Collectors.toList());
+
+        // The random points land anywhere in the bounding box (forest, fields, water); move them onto the road.
+        roadSnapper.snapToRoads(vehicles, visits);
 
         return new VehicleRoutePlan(name, demoData.southWestCorner, demoData.northEastCorner,
                 tomorrowAt(demoData.vehicleStartTime), tomorrowAt(LocalTime.MIDNIGHT).plusDays(1L),

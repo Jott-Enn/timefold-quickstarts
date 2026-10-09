@@ -131,10 +131,12 @@ $(document).ready(function () {
     })
     // Add new visit
     map.on('click', function (e) {
-        visitMarker = L.circleMarker(e.latlng);
+        // Clicks on a repeated world copy report longitudes beyond +-180; normalize them.
+        const latlng = e.latlng.wrap();
+        visitMarker = L.circleMarker(latlng);
         visitMarker.setStyle({color: 'green'});
         visitMarker.addTo(map);
-        openRecommendationModal(e.latlng.lat, e.latlng.lng);
+        openRecommendationModal(latlng.lat, latlng.lng);
     });
     // Remove visit mark
     $("#newVisitModal").on("hidden.bs.modal", function () {
@@ -159,7 +161,29 @@ function formatDrivingTime(drivingTimeInSeconds) {
 
 function homeLocationPopupContent(vehicle) {
     return `<h5>Vehicle ${vehicle.id}</h5>
-Home Location`;
+Home Location
+    ${roadSnapNote(vehicle.homeLocationSnap)}`;
+}
+
+// The correction applied when a location was moved onto the nearest road (see RoadSnap.java).
+function roadSnapNote(snap) {
+    if (!snap) {
+        return '';
+    }
+    const distance = snap.distanceMeters < 1000
+        ? `${Math.round(snap.distanceMeters)} m`
+        : `${(snap.distanceMeters / 1000).toFixed(1)} km`;
+    const road = snap.roadName ? escapeHtml(snap.roadName) : 'an unnamed road';
+    const [lat, lng] = snap.originalLocation;
+    return `<div class="road-snap-note small text-muted"
+        title="Original position ${lat}, ${lng}">
+      <i class="fas fa-road"></i> Moved ${distance} onto ${road}
+      <br>from ${lat.toFixed(5)}, ${lng.toFixed(5)}
+    </div>`;
+}
+
+function escapeHtml(text) {
+    return $('<div>').text(text).html();
 }
 
 function visitPopupContent(visit) {
@@ -167,7 +191,8 @@ function visitPopupContent(visit) {
     return `<h5>${visit.name}</h5>
     <h6>Demand: ${visit.demand}</h6>
     <h6>Available from ${showTimeOnly(visit.minStartTime)} to ${showTimeOnly(visit.maxEndTime)}.</h6>
-    ${arrival}`;
+    ${arrival}
+    ${roadSnapNote(visit.locationSnap)}`;
 }
 
 function showTimeOnly(localDateTimeString) {
@@ -422,10 +447,24 @@ function openRecommendationModal(lat, lng) {
         alert(message);
         return;
     }
+    // Move the clicked point onto the nearest road; if that fails, keep the clicked point.
+    $.getJSON("/road-snap", {latitude: lat, longitude: lng})
+        .done(snap => openNewVisitModal(lat, lng, snap || null))
+        .fail(() => openNewVisitModal(lat, lng, null));
+}
+
+function openNewVisitModal(lat, lng, snap) {
+    if (visitMarker === null) {
+        return;
+    }
+    if (snap) {
+        [lat, lng] = snap.snappedLocation;
+        visitMarker.setLatLng([lat, lng]);
+    }
     // see recommended-fit.js
     const visitId = Math.max(...loadedRoutePlan.visits.map(c => parseInt(c.id))) + 1;
-    newVisit = {id: visitId, location: [lat, lng]};
-    addNewVisit(visitId, lat, lng, map, visitMarker);
+    newVisit = {id: visitId, location: [lat, lng], locationSnap: snap};
+    addNewVisit(visitId, lat, lng, map, visitMarker, snap);
 }
 
 function getRecommendationsModal() {
