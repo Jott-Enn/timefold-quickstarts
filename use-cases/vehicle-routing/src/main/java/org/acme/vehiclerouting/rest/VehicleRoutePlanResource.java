@@ -1,7 +1,9 @@
 package org.acme.vehiclerouting.rest;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -33,6 +35,7 @@ import org.acme.vehiclerouting.domain.dto.RecommendationRequest;
 import org.acme.vehiclerouting.domain.dto.VehicleRecommendation;
 import org.acme.vehiclerouting.rest.exception.ErrorInfo;
 import org.acme.vehiclerouting.rest.exception.VehicleRoutingSolverException;
+import org.acme.vehiclerouting.sightline.BackendJournal;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
@@ -94,13 +97,22 @@ public class VehicleRoutePlanResource {
     public String solve(VehicleRoutePlan problem) {
         String jobId = UUID.randomUUID().toString();
         jobIdToJob.put(jobId, Job.ofRoutePlan(problem));
+        BackendJournal.jobSubmitted(jobId, sizeOf(problem.getVisits()), sizeOf(problem.getVehicles()));
         solverManager.solveBuilder()
                 .withProblemId(jobId)
                 .withProblemFinder(jobId_ -> jobIdToJob.get(jobId).routePlan)
-                .withBestSolutionEventConsumer(event -> jobIdToJob.put(jobId, Job.ofRoutePlan(event.solution())))
+                .withFirstInitializedSolutionEventConsumer(event -> journalBestSolution(jobId, "firstInitialized",
+                        event.producerId().simpleProducerName(), event.solution()))
+                .withBestSolutionEventConsumer(event -> {
+                    jobIdToJob.put(jobId, Job.ofRoutePlan(event.solution()));
+                    journalBestSolution(jobId, "newBest", event.producerId().simpleProducerName(), event.solution());
+                })
+                .withFinalBestSolutionEventConsumer(event -> BackendJournal.jobFinished(jobId,
+                        String.valueOf(event.solution().getScore()), "terminated"))
                 .withExceptionHandler((jobId_, exception) -> {
                     jobIdToJob.put(jobId, Job.ofException(exception));
                     LOGGER.error("Failed solving jobId ({}).", jobId, exception);
+                    BackendJournal.jobFinished(jobId, null, "exception: " + exception);
                 })
                 .run();
         return jobId;
@@ -159,6 +171,8 @@ public class VehicleRoutePlanResource {
                 .orElseThrow(() -> new IllegalStateException("Visit %s not found".formatted(request.visitId())));
         vehicleTarget.getVisits().add(request.index(), visit);
         solutionManager.update(updatedSolution);
+        BackendJournal.placedOutsideSolver(null, visit.getId(), "recommendation/apply",
+                vehicleTarget.getId() + "#" + request.index());
         return updatedSolution;
     }
 
@@ -256,6 +270,28 @@ public class VehicleRoutePlanResource {
     public ScoreAnalysis<HardMediumSoftScore> analyze(VehicleRoutePlan problem,
                                                     @QueryParam("fetchPolicy") ScoreAnalysisFetchPolicy fetchPolicy) {
         return fetchPolicy == null ? solutionManager.analyze(problem) : solutionManager.analyze(problem, fetchPolicy);
+    }
+
+    private static int sizeOf(List<?> list) {
+        return list == null ? 0 : list.size();
+    }
+
+    /** Sightline: journal the best solution and which visits it (re)placed. No-op outside dev/test. */
+    private static void journalBestSolution(String jobId, String kind, String producer, VehicleRoutePlan solution) {
+        if (!BackendJournal.isEnabled()) {
+            return;
+        }
+        Map<String, String> assignment = new HashMap<>();
+        for (Visit visit : solution.getVisits()) {
+            assignment.put(visit.getId(), null);
+        }
+        for (Vehicle vehicle : solution.getVehicles()) {
+            List<Visit> visits = vehicle.getVisits();
+            for (int i = 0; i < visits.size(); i++) {
+                assignment.put(visits.get(i).getId(), vehicle.getId() + "#" + i);
+            }
+        }
+        BackendJournal.bestSolution(jobId, kind, producer, String.valueOf(solution.getScore()), assignment);
     }
 
     private record Job(VehicleRoutePlan routePlan, Throwable exception) {

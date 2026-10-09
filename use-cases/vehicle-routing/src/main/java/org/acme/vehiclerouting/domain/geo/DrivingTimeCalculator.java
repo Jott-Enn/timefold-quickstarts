@@ -42,7 +42,12 @@ public interface DrivingTimeCalculator {
      * @param locations locations list
      */
     default void initDrivingTimeMaps(Collection<Location> locations) {
+        long startNanos = System.nanoTime();
         Map<Location, Map<Location, Long>> drivingTimeMatrix = calculateBulkDrivingTime(locations, locations);
         locations.forEach(location -> location.setDrivingTimeSeconds(drivingTimeMatrix.get(location)));
+        // Sightline: the matrix is recomputed (never cached) on every deserialized plan; journal that work.
+        org.acme.vehiclerouting.sightline.BackendJournal.record("cache.drivingTimeMatrix.recomputed",
+                "calculator", getClass().getSimpleName(), "locations", locations.size(),
+                "ms", (System.nanoTime() - startNanos) / 1_000_000.0, "cacheHit", false);
     }
 }

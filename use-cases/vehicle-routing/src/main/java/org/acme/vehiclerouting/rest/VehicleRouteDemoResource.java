@@ -125,6 +125,10 @@ public class VehicleRouteDemoResource {
             this.southWestCorner = southWestCorner;
             this.northEastCorner = northEastCorner;
         }
+
+        public long getSeed() {
+            return seed;
+        }
     }
 
     @APIResponses(value = {
