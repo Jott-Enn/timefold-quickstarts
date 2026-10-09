@@ -11,6 +11,46 @@ const stopSolvingButton = $('#stopSolvingButton');
 const vehiclesTable = $('#vehicles');
 const analyzeButton = $('#analyzeButton');
 
+/******************************************** App clock *****************************************************/
+// All timed UI work (the solver polling) runs on this clock instead of raw setInterval, so the in-app findings tool
+// (Sightline, dev builds only) can freeze the moment it captures: while frozen no tick fires and no deferred render
+// runs, so buttons, labels and the map stay exactly as they were; resume() continues from the frozen value.
+const AppClock = (() => {
+    let pausedTotal = 0;
+    let frozenAtReal = null;
+    let nextId = 1;
+    const timers = new Map();
+    const deferred = [];
+    const real = () => performance.now();
+    const now = () => (frozenAtReal ?? real()) - pausedTotal;
+    setInterval(() => {
+        if (frozenAtReal !== null) return;
+        const t = now();
+        for (const timer of timers.values()) {
+            if (t >= timer.due) {
+                timer.due = t + timer.ms;
+                try { timer.fn(); } catch (e) { console.error(e); }
+            }
+        }
+    }, 50);
+    return {
+        now,
+        isFrozen: () => frozenAtReal !== null,
+        every(ms, fn) { const id = nextId++; timers.set(id, {ms, fn, due: now() + ms}); return id; },
+        cancel(id) { timers.delete(id); },
+        freeze() { if (frozenAtReal === null) frozenAtReal = real(); return now(); },
+        resume() {
+            if (frozenAtReal !== null) {
+                pausedTotal += real() - frozenAtReal;
+                frozenAtReal = null;
+                deferred.splice(0).forEach(fn => fn());
+            }
+            return now();
+        },
+        whenRunning(fn) { if (frozenAtReal === null) fn(); else deferred.push(fn); }
+    };
+})();
+
 /*************************************** Map constants and variable definitions  **************************************/
 
 const homeLocationMarkerByIdMap = new Map();
@@ -74,6 +114,7 @@ $(document).ready(function () {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+        crossOrigin: true, // lets the findings tool's map-only fallback read tile pixels
     }).addTo(map);
 
     solveButton.click(solve);
@@ -488,14 +529,14 @@ function refreshSolvingButtons(solving) {
         $("#visitButton").hide();
         $("#stopSolvingButton").show();
         if (autoRefreshIntervalId == null) {
-            autoRefreshIntervalId = setInterval(refreshRoutePlan, 2000);
+            autoRefreshIntervalId = AppClock.every(2000, refreshRoutePlan);
         }
     } else {
         $("#solveButton").show();
         $("#visitButton").show();
         $("#stopSolvingButton").hide();
         if (autoRefreshIntervalId != null) {
-            clearInterval(autoRefreshIntervalId);
+            AppClock.cancel(autoRefreshIntervalId);
             autoRefreshIntervalId = null;
         }
     }
@@ -513,15 +554,20 @@ function refreshRoutePlan() {
     }
 
     $.getJSON(path, function (routePlan) {
-        loadedRoutePlan = routePlan;
-        refreshSolvingButtons(routePlan.solverStatus != null && routePlan.solverStatus !== "NOT_SOLVING");
-        renderRoutes(routePlan);
-        renderTimelines(routePlan);
-        initialized = true;
+        AppClock.whenRunning(() => applyRoutePlan(routePlan));
     }).fail(function (xhr, ajaxOptions, thrownError) {
         showError("Getting route plan has failed.", xhr);
         refreshSolvingButtons(false);
     });
+}
+
+// The application's single load path: everything that puts a route plan on screen goes through here.
+function applyRoutePlan(routePlan) {
+    loadedRoutePlan = routePlan;
+    refreshSolvingButtons(routePlan.solverStatus != null && routePlan.solverStatus !== "NOT_SOLVING");
+    renderRoutes(routePlan);
+    renderTimelines(routePlan);
+    initialized = true;
 }
 
 function stopSolving() {
