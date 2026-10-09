@@ -267,12 +267,15 @@ def guard_check(browser, args, out):
     page.click("#sightlineButton")
     try:
         wait_view(page)
-        ok_open = True
+        page.wait_for_timeout(1000)
+        frame = page.evaluate("""() => { const c = document.querySelector('#sightline-view canvas');
+            const t = document.querySelector('.sl-toast'); return {w: c.width, h: c.height, toast: t ? t.textContent : null}; }""")
+        ok_open = frame["w"] == 1600 and frame["h"] == 1000 and not frame["toast"]
     except Exception as e:
-        ok_open = False
+        frame, ok_open = repr(e), False
     res = page.evaluate("""async () => { try { await Sightline.capture(); return 'captured'; }
         catch (e) { return (e instanceof Sightline.CaptureRefused ? 'refused: ' : 'other: ') + e.message; } }""")
-    check("guard: the Finding button opens the view after capturing", ok_open, "view visible" if ok_open else "view never opened")
+    check("guard: the Finding button opens the view on a captured frame", ok_open, frame)
     check("guard: capture() refuses while the annotation view is visible", res.startswith("refused"), res)
     if ok_open:
         page.click("#sightline-view .sl-cancel")
@@ -410,12 +413,36 @@ def server_down_check(browser, args, out):
     ctx.close()
 
 
+def open_in_app_check(browser, args, out):
+    """The findings page lists the finding; "Open in app" rebuilds the captured state through the app's load path."""
+    stem = (out / "main_stem.txt").read_text().strip()
+    side = json.loads((Path(args.findings_dir) / (stem + ".json")).read_text(encoding="utf-8"))
+    ctx = browser.new_context(viewport={"width": 1600, "height": 1000})
+    page = ctx.new_page()
+    page.goto(args.base.rstrip("/") + "/sightline", wait_until="load")
+    page.wait_for_selector(f".finding[data-name='{stem}']", timeout=15000)
+    first = page.evaluate("document.querySelector('.finding').dataset.name")
+    page.click(f".finding[data-name='{stem}'] .sl-open")
+    page.wait_for_function("window.__sightlineOpened", timeout=30000)
+    page.wait_for_timeout(1000)
+    shown = page.evaluate("""() => ({score: $('#score').text(), driving: $('#drivingTime').text(),
+        rows: $('#vehicles tr').map(function () { return $(this).find('.progress-bar').text().trim(); }).get(),
+        stop: $('#stopSolvingButton').is(':visible')})""")
+    want_rows = [v["load"] for v in side["display"]["vehicles"]]
+    check("open in app: findings page lists it and reloads the captured state",
+          shown["score"] == side["display"]["score"] and shown["driving"] == side["display"]["drivingTime"]
+          and shown["rows"] == want_rows and not shown["stop"],
+          f"first listed={first}; shown score={shown['score']} driving={shown['driving']} loads={shown['rows']}")
+    page.screenshot(path=str(out / "open_in_app.png"))
+    ctx.close()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="http://localhost:8080")
     ap.add_argument("--findings-dir", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--only", default="guard,main,clock,shortcut,cap,empty,deny")
+    ap.add_argument("--only", default="guard,main,clock,shortcut,open,cap,empty,deny")
     ap.add_argument("--stop-server-cmd", default=None)
     args = ap.parse_args()
     out = Path(args.out)
@@ -424,7 +451,7 @@ def main():
     with sync_playwright() as pw:
         browser = pw.chromium.launch(channel="chrome", headless=True, args=FAKE_CAPTURE)
         steps = [("guard", guard_check), ("main", main_finding), ("clock", clock_check), ("shortcut", shortcut_check),
-                 ("cap", cap_check), ("empty", empty_guard_check)]
+                 ("open", open_in_app_check), ("cap", cap_check), ("empty", empty_guard_check)]
         for name, fn in steps:
             if name in only:
                 try:
