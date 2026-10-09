@@ -1,0 +1,1541 @@
+{
+  "note" : "geo position soll direkt auf fahrbahrer strasse liegen (mit kleinem Popup weleches Delta angewendet wurde)",
+  "source" : {
+    "name" : "page",
+    "method" : "getDisplayMedia",
+    "step" : 0,
+    "surface" : "browser",
+    "view" : "map"
+  },
+  "complete" : true,
+  "image" : {
+    "width" : 1890,
+    "height" : 962,
+    "capturedWidth" : 1890,
+    "capturedHeight" : 962,
+    "cappedFactor" : 1,
+    "cssToImageScale" : 1.25,
+    "maxEdge" : 2560,
+    "format" : "png (lossless)",
+    "file" : "finding-20261009-155741.png",
+    "thumb" : "finding-20261009-155741.thumb.png",
+    "bytes" : 714530
+  },
+  "marks" : [ {
+    "n" : 1,
+    "kind" : "ellipse",
+    "colour" : "green",
+    "width" : 6,
+    "points" : [ [ 561.2, 486 ], [ 858.1, 729.9 ] ],
+    "label" : [ 604.7, 521.7 ],
+    "objects" : [ {
+      "id" : "visit:16",
+      "relation" : "encloses",
+      "via" : "visit-marker",
+      "distance" : 0
+    } ]
+  } ],
+  "resolution" : {
+    "sceneObjects" : 10,
+    "resolvable" : "all six kinds (ellipse/box enclose, line/freehand cross or enclose when closed, arrow points at, number labels)",
+    "objectKinds" : [ "visit-marker", "route-leg", "vehicle-row", "score" ],
+    "notResolvable" : "map tiles/streets, the score analysis and add-visit dialogs, popups, the REST/guide tabs"
+  },
+  "scene" : [ {
+    "id" : "visit:16",
+    "kind" : "visit-marker",
+    "shape" : "circle",
+    "x" : 705,
+    "y" : 611.7,
+    "r" : 12.5
+  }, {
+    "id" : "leg:4:0",
+    "kind" : "route-leg",
+    "shape" : "segment",
+    "x1" : 24161.3,
+    "y1" : 63175.4,
+    "x2" : 705,
+    "y2" : 611.7
+  }, {
+    "id" : "leg:4:1",
+    "kind" : "route-leg",
+    "shape" : "segment",
+    "x1" : 705,
+    "y1" : 611.7,
+    "x2" : -103382.5,
+    "y2" : 144451.7
+  }, {
+    "id" : "vehicle:1",
+    "kind" : "vehicle-row",
+    "shape" : "rect",
+    "x" : 1418.2,
+    "y" : 518.9,
+    "w" : 418.8,
+    "h" : 40
+  }, {
+    "id" : "vehicle:2",
+    "kind" : "vehicle-row",
+    "shape" : "rect",
+    "x" : 1418.2,
+    "y" : 558.9,
+    "w" : 418.8,
+    "h" : 40
+  }, {
+    "id" : "vehicle:3",
+    "kind" : "vehicle-row",
+    "shape" : "rect",
+    "x" : 1418.2,
+    "y" : 598.9,
+    "w" : 418.8,
+    "h" : 40
+  }, {
+    "id" : "vehicle:4",
+    "kind" : "vehicle-row",
+    "shape" : "rect",
+    "x" : 1418.2,
+    "y" : 638.9,
+    "w" : 418.8,
+    "h" : 40
+  }, {
+    "id" : "vehicle:5",
+    "kind" : "vehicle-row",
+    "shape" : "rect",
+    "x" : 1418.2,
+    "y" : 678.9,
+    "w" : 418.8,
+    "h" : 40
+  }, {
+    "id" : "vehicle:6",
+    "kind" : "vehicle-row",
+    "shape" : "rect",
+    "x" : 1418.2,
+    "y" : 718.9,
+    "w" : 418.8,
+    "h" : 40
+  }, {
+    "id" : "score",
+    "kind" : "score",
+    "shape" : "rect",
+    "x" : 1641,
+    "y" : 297.9,
+    "w" : 152,
+    "h" : 27
+  } ],
+  "state" : {
+    "format" : "VehicleRoutePlan JSON exactly as the app loads it (GET /demo-data/{id} or GET /route-plans/{jobId}) and posts it to solve; passed through opaque",
+    "routePlan" : {
+      "name" : "demo",
+      "southWestCorner" : [ 39.7656099067391, -76.83782328143754 ],
+      "northEastCorner" : [ 40.77636644354855, -74.9300739430771 ],
+      "startDateTime" : "2026-10-10T07:30:00",
+      "endDateTime" : "2026-10-11T00:00:00",
+      "vehicles" : [ {
+        "id" : "1",
+        "capacity" : 24,
+        "homeLocation" : [ 40.062142186054544, -76.82989455982668 ],
+        "departureTime" : "2026-10-10T07:30:00",
+        "visits" : [ "4", "20", "44", "21", "9", "29", "17", "36", "31" ],
+        "arrivalTime" : "2026-10-10T16:58:31",
+        "totalDemand" : 13,
+        "totalDrivingTimeSeconds" : 15161
+      }, {
+        "id" : "2",
+        "capacity" : 28,
+        "homeLocation" : [ 40.76209146149724, -75.20264545294424 ],
+        "departureTime" : "2026-10-10T07:30:00",
+        "visits" : [ "49", "26", "27", "45", "50", "43", "5", "15", "6", "8" ],
+        "arrivalTime" : "2026-10-10T16:42:23",
+        "totalDemand" : 14,
+        "totalDrivingTimeSeconds" : 18750
+      }, {
+        "id" : "3",
+        "capacity" : 27,
+        "homeLocation" : [ 40.22333716706126, -75.84588681726002 ],
+        "departureTime" : "2026-10-10T07:30:00",
+        "visits" : [ "3", "14", "52", "54", "11", "1", "47", "51" ],
+        "arrivalTime" : "2026-10-10T15:41:21",
+        "totalDemand" : 13,
+        "totalDrivingTimeSeconds" : 12941
+      }, {
+        "id" : "4",
+        "capacity" : 15,
+        "homeLocation" : [ 40.516761428382175, -75.02625642550558 ],
+        "departureTime" : "2026-10-10T07:30:00",
+        "visits" : [ "16", "25", "32", "24", "48", "13", "12" ],
+        "arrivalTime" : "2026-10-10T14:33:47",
+        "totalDemand" : 11,
+        "totalDrivingTimeSeconds" : 11260
+      }, {
+        "id" : "5",
+        "capacity" : 27,
+        "homeLocation" : [ 39.87768478827255, -75.33976657041845 ],
+        "departureTime" : "2026-10-10T07:30:00",
+        "visits" : [ "41", "30", "38", "10", "39", "42", "40", "34", "35", "55", "33" ],
+        "arrivalTime" : "2026-10-10T18:14:05",
+        "totalDemand" : 16,
+        "totalDrivingTimeSeconds" : 22049
+      }, {
+        "id" : "6",
+        "capacity" : 28,
+        "homeLocation" : [ 39.822967452068845, -76.05891766057759 ],
+        "departureTime" : "2026-10-10T07:30:00",
+        "visits" : [ "28", "18", "19", "46", "23", "2", "7", "53", "22", "37" ],
+        "arrivalTime" : "2026-10-10T17:54:37",
+        "totalDemand" : 14,
+        "totalDrivingTimeSeconds" : 19736
+      } ],
+      "visits" : [ {
+        "id" : "1",
+        "name" : "Hugo Cole",
+        "location" : [ 40.333599831522896, -75.92976408916294 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 1800,
+        "vehicle" : "3",
+        "previousVisit" : "11",
+        "arrivalTime" : "2026-10-10T13:25:21",
+        "startServiceTime" : "2026-10-10T13:25:21",
+        "departureTime" : "2026-10-10T13:55:21",
+        "drivingTimeSecondsFromPreviousStandstill" : 321
+      }, {
+        "id" : "2",
+        "name" : "Flo Smith",
+        "location" : [ 40.36532300074279, -76.38315252015386 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 1800,
+        "vehicle" : "6",
+        "previousVisit" : "23",
+        "arrivalTime" : "2026-10-10T11:48:44",
+        "startServiceTime" : "2026-10-10T13:00:00",
+        "departureTime" : "2026-10-10T13:30:00",
+        "drivingTimeSecondsFromPreviousStandstill" : 349
+      }, {
+        "id" : "3",
+        "name" : "Jay Poe",
+        "location" : [ 40.38888449136959, -75.67620348086285 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1800,
+        "vehicle" : "3",
+        "previousVisit" : null,
+        "arrivalTime" : "2026-10-10T07:58:02",
+        "startServiceTime" : "2026-10-10T08:00:00",
+        "departureTime" : "2026-10-10T08:30:00",
+        "drivingTimeSecondsFromPreviousStandstill" : 1682
+      }, {
+        "id" : "4",
+        "name" : "Dan King",
+        "location" : [ 40.311629722161314, -76.81754092392403 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 2400,
+        "vehicle" : "1",
+        "previousVisit" : null,
+        "arrivalTime" : "2026-10-10T08:03:19",
+        "startServiceTime" : "2026-10-10T08:03:19",
+        "departureTime" : "2026-10-10T08:43:19",
+        "drivingTimeSecondsFromPreviousStandstill" : 1999
+      }, {
+        "id" : "5",
+        "name" : "Elsa Rye",
+        "location" : [ 40.708304774013016, -76.32878439218923 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "2",
+        "previousVisit" : "43",
+        "arrivalTime" : "2026-10-10T13:31:29",
+        "startServiceTime" : "2026-10-10T13:31:29",
+        "departureTime" : "2026-10-10T13:41:29",
+        "drivingTimeSecondsFromPreviousStandstill" : 1289
+      }, {
+        "id" : "6",
+        "name" : "Dan Li",
+        "location" : [ 40.76021717022356, -76.20121186956843 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "2",
+        "previousVisit" : "15",
+        "arrivalTime" : "2026-10-10T14:09:50",
+        "startServiceTime" : "2026-10-10T14:09:50",
+        "departureTime" : "2026-10-10T14:19:50",
+        "drivingTimeSecondsFromPreviousStandstill" : 843
+      }, {
+        "id" : "7",
+        "name" : "Ivy Rye",
+        "location" : [ 40.23859619154949, -76.35494465287347 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "6",
+        "previousVisit" : "2",
+        "arrivalTime" : "2026-10-10T13:47:09",
+        "startServiceTime" : "2026-10-10T13:47:09",
+        "departureTime" : "2026-10-10T14:07:09",
+        "drivingTimeSecondsFromPreviousStandstill" : 1029
+      }, {
+        "id" : "8",
+        "name" : "Hugo Cole",
+        "location" : [ 40.695631831952305, -75.80858117767238 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 2400,
+        "vehicle" : "2",
+        "previousVisit" : "6",
+        "arrivalTime" : "2026-10-10T15:00:28",
+        "startServiceTime" : "2026-10-10T15:00:28",
+        "departureTime" : "2026-10-10T15:40:28",
+        "drivingTimeSecondsFromPreviousStandstill" : 2438
+      }, {
+        "id" : "9",
+        "name" : "Ivy King",
+        "location" : [ 39.92357511766275, -76.50522719654359 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "1",
+        "previousVisit" : "21",
+        "arrivalTime" : "2026-10-10T12:04:10",
+        "startServiceTime" : "2026-10-10T13:00:00",
+        "departureTime" : "2026-10-10T13:20:00",
+        "drivingTimeSecondsFromPreviousStandstill" : 864
+      }, {
+        "id" : "10",
+        "name" : "Amy Smith",
+        "location" : [ 40.03555053626361, -75.11158398521115 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "5",
+        "previousVisit" : "38",
+        "arrivalTime" : "2026-10-10T10:26:41",
+        "startServiceTime" : "2026-10-10T10:26:41",
+        "departureTime" : "2026-10-10T10:36:41",
+        "drivingTimeSecondsFromPreviousStandstill" : 2538
+      }, {
+        "id" : "11",
+        "name" : "Dan King",
+        "location" : [ 40.369453747576685, -75.90616049678165 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "3",
+        "previousVisit" : "54",
+        "arrivalTime" : "2026-10-10T10:56:18",
+        "startServiceTime" : "2026-10-10T13:00:00",
+        "departureTime" : "2026-10-10T13:20:00",
+        "drivingTimeSecondsFromPreviousStandstill" : 1949
+      }, {
+        "id" : "12",
+        "name" : "Hugo Rye",
+        "location" : [ 40.58649494696863, -75.08446988332038 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "4",
+        "previousVisit" : "13",
+        "arrivalTime" : "2026-10-10T14:12:46",
+        "startServiceTime" : "2026-10-10T14:12:46",
+        "departureTime" : "2026-10-10T14:22:46",
+        "drivingTimeSecondsFromPreviousStandstill" : 2566
+      }, {
+        "id" : "13",
+        "name" : "Elsa Poe",
+        "location" : [ 40.50601582808854, -75.49276077135329 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 1800,
+        "vehicle" : "4",
+        "previousVisit" : "48",
+        "arrivalTime" : "2026-10-10T11:49:21",
+        "startServiceTime" : "2026-10-10T13:00:00",
+        "departureTime" : "2026-10-10T13:30:00",
+        "drivingTimeSecondsFromPreviousStandstill" : 1438
+      }, {
+        "id" : "14",
+        "name" : "Carl Fox",
+        "location" : [ 40.35959274000729, -75.74732900005077 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "3",
+        "previousVisit" : "3",
+        "arrivalTime" : "2026-10-10T08:38:13",
+        "startServiceTime" : "2026-10-10T08:38:13",
+        "departureTime" : "2026-10-10T08:48:13",
+        "drivingTimeSecondsFromPreviousStandstill" : 493
+      }, {
+        "id" : "15",
+        "name" : "Carl Fox",
+        "location" : [ 40.68535159966817, -76.29895708556664 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "2",
+        "previousVisit" : "5",
+        "arrivalTime" : "2026-10-10T13:45:47",
+        "startServiceTime" : "2026-10-10T13:45:47",
+        "departureTime" : "2026-10-10T13:55:47",
+        "drivingTimeSecondsFromPreviousStandstill" : 258
+      }, {
+        "id" : "16",
+        "name" : "Gus Jones",
+        "location" : [ 40.61874158464826, -75.07658771957155 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "4",
+        "previousVisit" : null,
+        "arrivalTime" : "2026-10-10T07:44:32",
+        "startServiceTime" : "2026-10-10T08:00:00",
+        "departureTime" : "2026-10-10T08:20:00",
+        "drivingTimeSecondsFromPreviousStandstill" : 872
+      }, {
+        "id" : "17",
+        "name" : "Hugo Rye",
+        "location" : [ 39.941154208872746, -76.63086894597632 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 2400,
+        "vehicle" : "1",
+        "previousVisit" : "29",
+        "arrivalTime" : "2026-10-10T14:06:43",
+        "startServiceTime" : "2026-10-10T14:06:43",
+        "departureTime" : "2026-10-10T14:46:43",
+        "drivingTimeSecondsFromPreviousStandstill" : 625
+      }, {
+        "id" : "18",
+        "name" : "Elsa Watt",
+        "location" : [ 39.87428674281021, -76.22940630744704 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "6",
+        "previousVisit" : "28",
+        "arrivalTime" : "2026-10-10T08:51:00",
+        "startServiceTime" : "2026-10-10T08:51:00",
+        "departureTime" : "2026-10-10T09:11:00",
+        "drivingTimeSecondsFromPreviousStandstill" : 2460
+      }, {
+        "id" : "19",
+        "name" : "Hugo Watt",
+        "location" : [ 40.143686166316385, -76.04807110496832 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "6",
+        "previousVisit" : "18",
+        "arrivalTime" : "2026-10-10T09:51:27",
+        "startServiceTime" : "2026-10-10T09:51:27",
+        "departureTime" : "2026-10-10T10:11:27",
+        "drivingTimeSecondsFromPreviousStandstill" : 2427
+      }, {
+        "id" : "20",
+        "name" : "Gus Watt",
+        "location" : [ 40.107171652988875, -76.65828746053856 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 2400,
+        "vehicle" : "1",
+        "previousVisit" : "4",
+        "arrivalTime" : "2026-10-10T09:15:04",
+        "startServiceTime" : "2026-10-10T09:15:04",
+        "departureTime" : "2026-10-10T09:55:04",
+        "drivingTimeSecondsFromPreviousStandstill" : 1905
+      }, {
+        "id" : "21",
+        "name" : "Gus Fox",
+        "location" : [ 39.83533134071455, -76.42432636292223 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 2400,
+        "vehicle" : "1",
+        "previousVisit" : "44",
+        "arrivalTime" : "2026-10-10T11:09:46",
+        "startServiceTime" : "2026-10-10T11:09:46",
+        "departureTime" : "2026-10-10T11:49:46",
+        "drivingTimeSecondsFromPreviousStandstill" : 1565
+      }, {
+        "id" : "22",
+        "name" : "Carl Cole",
+        "location" : [ 39.781953045014454, -76.45598685645876 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 2400,
+        "vehicle" : "6",
+        "previousVisit" : "53",
+        "arrivalTime" : "2026-10-10T16:21:00",
+        "startServiceTime" : "2026-10-10T16:21:00",
+        "departureTime" : "2026-10-10T17:01:00",
+        "drivingTimeSecondsFromPreviousStandstill" : 4097
+      }, {
+        "id" : "23",
+        "name" : "Hugo Li",
+        "location" : [ 40.33346699234537, -76.34408436414576 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "6",
+        "previousVisit" : "46",
+        "arrivalTime" : "2026-10-10T11:22:55",
+        "startServiceTime" : "2026-10-10T11:22:55",
+        "departureTime" : "2026-10-10T11:42:55",
+        "drivingTimeSecondsFromPreviousStandstill" : 1847
+      }, {
+        "id" : "24",
+        "name" : "Gus Smith",
+        "location" : [ 40.62284268702995, -75.68212192985769 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1800,
+        "vehicle" : "4",
+        "previousVisit" : "32",
+        "arrivalTime" : "2026-10-10T10:39:55",
+        "startServiceTime" : "2026-10-10T10:39:55",
+        "departureTime" : "2026-10-10T11:09:55",
+        "drivingTimeSecondsFromPreviousStandstill" : 717
+      }, {
+        "id" : "25",
+        "name" : "Jay Watt",
+        "location" : [ 40.38404863024938, -75.29993728670185 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 2400,
+        "vehicle" : "4",
+        "previousVisit" : "16",
+        "arrivalTime" : "2026-10-10T08:58:39",
+        "startServiceTime" : "2026-10-10T08:58:39",
+        "departureTime" : "2026-10-10T09:38:39",
+        "drivingTimeSecondsFromPreviousStandstill" : 2319
+      }, {
+        "id" : "26",
+        "name" : "Amy Poe",
+        "location" : [ 40.70136885224167, -75.93069714591877 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "2",
+        "previousVisit" : "49",
+        "arrivalTime" : "2026-10-10T09:14:20",
+        "startServiceTime" : "2026-10-10T09:14:20",
+        "departureTime" : "2026-10-10T09:34:20",
+        "drivingTimeSecondsFromPreviousStandstill" : 2223
+      }, {
+        "id" : "27",
+        "name" : "Hugo Fox",
+        "location" : [ 40.76855658236372, -76.44404779362462 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "2",
+        "previousVisit" : "26",
+        "arrivalTime" : "2026-10-10T10:27:00",
+        "startServiceTime" : "2026-10-10T10:27:00",
+        "departureTime" : "2026-10-10T10:37:00",
+        "drivingTimeSecondsFromPreviousStandstill" : 3160
+      }, {
+        "id" : "28",
+        "name" : "Carl Watt",
+        "location" : [ 39.900464713640574, -75.83043059538464 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "6",
+        "previousVisit" : null,
+        "arrivalTime" : "2026-10-10T07:55:35",
+        "startServiceTime" : "2026-10-10T08:00:00",
+        "departureTime" : "2026-10-10T08:10:00",
+        "drivingTimeSecondsFromPreviousStandstill" : 1535
+      }, {
+        "id" : "29",
+        "name" : "Amy Rye",
+        "location" : [ 40.01719653700809, -76.60762207105441 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "1",
+        "previousVisit" : "9",
+        "arrivalTime" : "2026-10-10T13:36:18",
+        "startServiceTime" : "2026-10-10T13:36:18",
+        "departureTime" : "2026-10-10T13:56:18",
+        "drivingTimeSecondsFromPreviousStandstill" : 978
+      }, {
+        "id" : "30",
+        "name" : "Ivy Green",
+        "location" : [ 40.184488114830856, -75.57928328405006 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1800,
+        "vehicle" : "5",
+        "previousVisit" : "41",
+        "arrivalTime" : "2026-10-10T08:31:22",
+        "startServiceTime" : "2026-10-10T08:31:22",
+        "departureTime" : "2026-10-10T09:01:22",
+        "drivingTimeSecondsFromPreviousStandstill" : 230
+      }, {
+        "id" : "31",
+        "name" : "Dan Rye",
+        "location" : [ 40.20665080946525, -76.60457468021626 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "1",
+        "previousVisit" : "36",
+        "arrivalTime" : "2026-10-10T16:08:31",
+        "startServiceTime" : "2026-10-10T16:08:31",
+        "departureTime" : "2026-10-10T16:28:31",
+        "drivingTimeSecondsFromPreviousStandstill" : 2968
+      }, {
+        "id" : "32",
+        "name" : "Elsa Rye",
+        "location" : [ 40.54458939935359, -75.62465553903024 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "4",
+        "previousVisit" : "25",
+        "arrivalTime" : "2026-10-10T10:17:58",
+        "startServiceTime" : "2026-10-10T10:17:58",
+        "departureTime" : "2026-10-10T10:27:58",
+        "drivingTimeSecondsFromPreviousStandstill" : 2359
+      }, {
+        "id" : "33",
+        "name" : "Ivy Watt",
+        "location" : [ 40.11181868110524, -75.40504593343209 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "5",
+        "previousVisit" : "55",
+        "arrivalTime" : "2026-10-10T17:22:08",
+        "startServiceTime" : "2026-10-10T17:22:08",
+        "departureTime" : "2026-10-10T17:42:08",
+        "drivingTimeSecondsFromPreviousStandstill" : 2096
+      }, {
+        "id" : "34",
+        "name" : "Ivy Li",
+        "location" : [ 40.14494977716075, -75.70170628634976 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "5",
+        "previousVisit" : "40",
+        "arrivalTime" : "2026-10-10T14:51:01",
+        "startServiceTime" : "2026-10-10T14:51:01",
+        "departureTime" : "2026-10-10T15:01:01",
+        "drivingTimeSecondsFromPreviousStandstill" : 3263
+      }, {
+        "id" : "35",
+        "name" : "Jay Poe",
+        "location" : [ 40.2359553274641, -75.40863401864505 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "5",
+        "previousVisit" : "34",
+        "arrivalTime" : "2026-10-10T15:33:16",
+        "startServiceTime" : "2026-10-10T15:33:16",
+        "departureTime" : "2026-10-10T15:43:16",
+        "drivingTimeSecondsFromPreviousStandstill" : 1935
+      }, {
+        "id" : "36",
+        "name" : "Hugo Smith",
+        "location" : [ 39.88028366196594, -76.83410931434597 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "1",
+        "previousVisit" : "17",
+        "arrivalTime" : "2026-10-10T15:09:03",
+        "startServiceTime" : "2026-10-10T15:09:03",
+        "departureTime" : "2026-10-10T15:19:03",
+        "drivingTimeSecondsFromPreviousStandstill" : 1340
+      }, {
+        "id" : "37",
+        "name" : "Elsa Jones",
+        "location" : [ 39.77908687782919, -76.10254334586338 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "6",
+        "previousVisit" : "22",
+        "arrivalTime" : "2026-10-10T17:37:15",
+        "startServiceTime" : "2026-10-10T17:37:15",
+        "departureTime" : "2026-10-10T17:47:15",
+        "drivingTimeSecondsFromPreviousStandstill" : 2175
+      }, {
+        "id" : "38",
+        "name" : "Hugo Jones",
+        "location" : [ 40.01707146529095, -75.52490916810083 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "5",
+        "previousVisit" : "30",
+        "arrivalTime" : "2026-10-10T09:24:23",
+        "startServiceTime" : "2026-10-10T09:24:23",
+        "departureTime" : "2026-10-10T09:44:23",
+        "drivingTimeSecondsFromPreviousStandstill" : 1381
+      }, {
+        "id" : "39",
+        "name" : "Dan Jones",
+        "location" : [ 40.035295881246505, -74.95947518864683 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1200,
+        "vehicle" : "5",
+        "previousVisit" : "10",
+        "arrivalTime" : "2026-10-10T10:52:13",
+        "startServiceTime" : "2026-10-10T10:52:13",
+        "departureTime" : "2026-10-10T11:12:13",
+        "drivingTimeSecondsFromPreviousStandstill" : 932
+      }, {
+        "id" : "40",
+        "name" : "Amy Li",
+        "location" : [ 39.960445474653596, -75.22699395363955 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 1800,
+        "vehicle" : "5",
+        "previousVisit" : "42",
+        "arrivalTime" : "2026-10-10T13:26:38",
+        "startServiceTime" : "2026-10-10T13:26:38",
+        "departureTime" : "2026-10-10T13:56:38",
+        "drivingTimeSecondsFromPreviousStandstill" : 998
+      }, {
+        "id" : "41",
+        "name" : "Carl Fox",
+        "location" : [ 40.197150433885646, -75.54553234032167 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "5",
+        "previousVisit" : null,
+        "arrivalTime" : "2026-10-10T08:17:32",
+        "startServiceTime" : "2026-10-10T08:17:32",
+        "departureTime" : "2026-10-10T08:27:32",
+        "drivingTimeSecondsFromPreviousStandstill" : 2852
+      }, {
+        "id" : "42",
+        "name" : "Ivy Li",
+        "location" : [ 39.84053381059538, -75.27169295135805 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "5",
+        "previousVisit" : "39",
+        "arrivalTime" : "2026-10-10T11:53:24",
+        "startServiceTime" : "2026-10-10T13:00:00",
+        "departureTime" : "2026-10-10T13:10:00",
+        "drivingTimeSecondsFromPreviousStandstill" : 2471
+      }, {
+        "id" : "43",
+        "name" : "Carl Watt",
+        "location" : [ 40.58231606020249, -76.46099157718749 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "2",
+        "previousVisit" : "50",
+        "arrivalTime" : "2026-10-10T12:00:07",
+        "startServiceTime" : "2026-10-10T13:00:00",
+        "departureTime" : "2026-10-10T13:10:00",
+        "drivingTimeSecondsFromPreviousStandstill" : 623
+      }, {
+        "id" : "44",
+        "name" : "Beth Fox",
+        "location" : [ 40.01660972013479, -76.51966403388072 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1800,
+        "vehicle" : "1",
+        "previousVisit" : "20",
+        "arrivalTime" : "2026-10-10T10:13:41",
+        "startServiceTime" : "2026-10-10T10:13:41",
+        "departureTime" : "2026-10-10T10:43:41",
+        "drivingTimeSecondsFromPreviousStandstill" : 1117
+      }, {
+        "id" : "45",
+        "name" : "Flo Jones",
+        "location" : [ 40.65940370237064, -76.3471436688401 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1800,
+        "vehicle" : "2",
+        "previousVisit" : "27",
+        "arrivalTime" : "2026-10-10T10:54:33",
+        "startServiceTime" : "2026-10-10T10:54:33",
+        "departureTime" : "2026-10-10T11:24:33",
+        "drivingTimeSecondsFromPreviousStandstill" : 1053
+      }, {
+        "id" : "46",
+        "name" : "Elsa Fox",
+        "location" : [ 40.37363996981607, -76.04602511432608 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "6",
+        "previousVisit" : "19",
+        "arrivalTime" : "2026-10-10T10:42:08",
+        "startServiceTime" : "2026-10-10T10:42:08",
+        "departureTime" : "2026-10-10T10:52:08",
+        "drivingTimeSecondsFromPreviousStandstill" : 1841
+      }, {
+        "id" : "47",
+        "name" : "Jay Poe",
+        "location" : [ 40.28087018451377, -76.06728599284484 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "3",
+        "previousVisit" : "1",
+        "arrivalTime" : "2026-10-10T14:11:01",
+        "startServiceTime" : "2026-10-10T14:11:01",
+        "departureTime" : "2026-10-10T14:21:01",
+        "drivingTimeSecondsFromPreviousStandstill" : 940
+      }, {
+        "id" : "48",
+        "name" : "Ivy Watt",
+        "location" : [ 40.64733472296068, -75.63884153295304 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "4",
+        "previousVisit" : "24",
+        "arrivalTime" : "2026-10-10T11:15:23",
+        "startServiceTime" : "2026-10-10T11:15:23",
+        "departureTime" : "2026-10-10T11:25:23",
+        "drivingTimeSecondsFromPreviousStandstill" : 328
+      }, {
+        "id" : "49",
+        "name" : "Dan Smith",
+        "location" : [ 40.75587528372913, -75.57140309866654 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1800,
+        "vehicle" : "2",
+        "previousVisit" : null,
+        "arrivalTime" : "2026-10-10T08:07:17",
+        "startServiceTime" : "2026-10-10T08:07:17",
+        "departureTime" : "2026-10-10T08:37:17",
+        "drivingTimeSecondsFromPreviousStandstill" : 2237
+      }, {
+        "id" : "50",
+        "name" : "Flo Fox",
+        "location" : [ 40.54695301012003, -76.36971510859 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "2",
+        "previousVisit" : "45",
+        "arrivalTime" : "2026-10-10T11:39:44",
+        "startServiceTime" : "2026-10-10T11:39:44",
+        "departureTime" : "2026-10-10T11:49:44",
+        "drivingTimeSecondsFromPreviousStandstill" : 911
+      }, {
+        "id" : "51",
+        "name" : "Carl King",
+        "location" : [ 40.45365155493481, -76.1696301413173 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "3",
+        "previousVisit" : "47",
+        "arrivalTime" : "2026-10-10T14:46:19",
+        "startServiceTime" : "2026-10-10T14:46:19",
+        "departureTime" : "2026-10-10T14:56:19",
+        "drivingTimeSecondsFromPreviousStandstill" : 1518
+      }, {
+        "id" : "52",
+        "name" : "Flo Rye",
+        "location" : [ 40.476560629882655, -76.03993907684848 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 600,
+        "vehicle" : "3",
+        "previousVisit" : "14",
+        "arrivalTime" : "2026-10-10T09:21:47",
+        "startServiceTime" : "2026-10-10T09:21:47",
+        "departureTime" : "2026-10-10T09:31:47",
+        "drivingTimeSecondsFromPreviousStandstill" : 2014
+      }, {
+        "id" : "53",
+        "name" : "Jay King",
+        "location" : [ 40.28174398979459, -76.5994966595117 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 2400,
+        "vehicle" : "6",
+        "previousVisit" : "7",
+        "arrivalTime" : "2026-10-10T14:32:43",
+        "startServiceTime" : "2026-10-10T14:32:43",
+        "departureTime" : "2026-10-10T15:12:43",
+        "drivingTimeSecondsFromPreviousStandstill" : 1534
+      }, {
+        "id" : "54",
+        "name" : "Amy Li",
+        "location" : [ 40.38994162045567, -76.22461769637182 ],
+        "demand" : 2,
+        "minStartTime" : "2026-10-10T08:00:00",
+        "maxEndTime" : "2026-10-10T12:00:00",
+        "serviceDuration" : 1800,
+        "vehicle" : "3",
+        "previousVisit" : "52",
+        "arrivalTime" : "2026-10-10T09:53:49",
+        "startServiceTime" : "2026-10-10T09:53:49",
+        "departureTime" : "2026-10-10T10:23:49",
+        "drivingTimeSecondsFromPreviousStandstill" : 1322
+      }, {
+        "id" : "55",
+        "name" : "Beth Fox",
+        "location" : [ 40.316770111690964, -75.61849968433866 ],
+        "demand" : 1,
+        "minStartTime" : "2026-10-10T13:00:00",
+        "maxEndTime" : "2026-10-10T18:00:00",
+        "serviceDuration" : 2400,
+        "vehicle" : "5",
+        "previousVisit" : "35",
+        "arrivalTime" : "2026-10-10T16:07:12",
+        "startServiceTime" : "2026-10-10T16:07:12",
+        "departureTime" : "2026-10-10T16:47:12",
+        "drivingTimeSecondsFromPreviousStandstill" : 1436
+      } ],
+      "score" : "0hard/0medium/-99897soft",
+      "solverStatus" : "NOT_SOLVING",
+      "totalDrivingTimeSeconds" : 99897
+    },
+    "demoDataId" : "PHILADELPHIA",
+    "scheduleId" : "93d4c323-529e-4205-9afd-55aba9dd0623",
+    "solving" : false,
+    "view" : {
+      "topTab" : "navUI",
+      "tab" : "map",
+      "map" : {
+        "center" : [ 40.61856772752031, -75.07659543682281 ],
+        "zoom" : 19
+      },
+      "byVehicleWindow" : [ "2026-10-10T05:30:00.000Z", "2026-10-10T22:00:00.000Z" ],
+      "byVisitWindow" : [ "2026-10-10T05:30:00.000Z", "2026-10-10T22:00:00.000Z" ],
+      "openModal" : null
+    }
+  },
+  "display" : {
+    "score" : "0H/0M/-99897S",
+    "drivingTime" : "27h 45m",
+    "info" : "This dataset has 55 visits who need to be assigned to 6 vehicles.",
+    "solveButtonVisible" : true,
+    "stopButtonVisible" : false,
+    "vehicles" : [ {
+      "id" : "1",
+      "load" : "13/24",
+      "drivingTime" : "4h 13m"
+    }, {
+      "id" : "2",
+      "load" : "14/28",
+      "drivingTime" : "5h 13m"
+    }, {
+      "id" : "3",
+      "load" : "13/27",
+      "drivingTime" : "3h 36m"
+    }, {
+      "id" : "4",
+      "load" : "11/15",
+      "drivingTime" : "3h 8m"
+    }, {
+      "id" : "5",
+      "load" : "16/27",
+      "drivingTime" : "6h 7m"
+    }, {
+      "id" : "6",
+      "load" : "14/28",
+      "drivingTime" : "5h 29m"
+    } ],
+    "visits" : [ {
+      "id" : "1",
+      "latlng" : [ 40.333599831522896, -75.92976408916294 ],
+      "colour" : "#D55E00"
+    }, {
+      "id" : "2",
+      "latlng" : [ 40.36532300074279, -76.38315252015386 ],
+      "colour" : "#E69F00"
+    }, {
+      "id" : "3",
+      "latlng" : [ 40.38888449136959, -75.67620348086285 ],
+      "colour" : "#D55E00"
+    }, {
+      "id" : "4",
+      "latlng" : [ 40.311629722161314, -76.81754092392403 ],
+      "colour" : "#009E73"
+    }, {
+      "id" : "5",
+      "latlng" : [ 40.708304774013016, -76.32878439218923 ],
+      "colour" : "#0072B2"
+    }, {
+      "id" : "6",
+      "latlng" : [ 40.76021717022356, -76.20121186956843 ],
+      "colour" : "#0072B2"
+    }, {
+      "id" : "7",
+      "latlng" : [ 40.23859619154949, -76.35494465287347 ],
+      "colour" : "#E69F00"
+    }, {
+      "id" : "8",
+      "latlng" : [ 40.695631831952305, -75.80858117767238 ],
+      "colour" : "#0072B2"
+    }, {
+      "id" : "9",
+      "latlng" : [ 39.92357511766275, -76.50522719654359 ],
+      "colour" : "#009E73"
+    }, {
+      "id" : "10",
+      "latlng" : [ 40.03555053626361, -75.11158398521115 ],
+      "colour" : "#CC79A7"
+    }, {
+      "id" : "11",
+      "latlng" : [ 40.369453747576685, -75.90616049678165 ],
+      "colour" : "#D55E00"
+    }, {
+      "id" : "12",
+      "latlng" : [ 40.58649494696863, -75.08446988332038 ],
+      "colour" : "#000000"
+    }, {
+      "id" : "13",
+      "latlng" : [ 40.50601582808854, -75.49276077135329 ],
+      "colour" : "#000000"
+    }, {
+      "id" : "14",
+      "latlng" : [ 40.35959274000729, -75.74732900005077 ],
+      "colour" : "#D55E00"
+    }, {
+      "id" : "15",
+      "latlng" : [ 40.68535159966817, -76.29895708556664 ],
+      "colour" : "#0072B2"
+    }, {
+      "id" : "16",
+      "latlng" : [ 40.61874158464826, -75.07658771957155 ],
+      "colour" : "#000000"
+    }, {
+      "id" : "17",
+      "latlng" : [ 39.941154208872746, -76.63086894597632 ],
+      "colour" : "#009E73"
+    }, {
+      "id" : "18",
+      "latlng" : [ 39.87428674281021, -76.22940630744704 ],
+      "colour" : "#E69F00"
+    }, {
+      "id" : "19",
+      "latlng" : [ 40.143686166316385, -76.04807110496832 ],
+      "colour" : "#E69F00"
+    }, {
+      "id" : "20",
+      "latlng" : [ 40.107171652988875, -76.65828746053856 ],
+      "colour" : "#009E73"
+    }, {
+      "id" : "21",
+      "latlng" : [ 39.83533134071455, -76.42432636292223 ],
+      "colour" : "#009E73"
+    }, {
+      "id" : "22",
+      "latlng" : [ 39.781953045014454, -76.45598685645876 ],
+      "colour" : "#E69F00"
+    }, {
+      "id" : "23",
+      "latlng" : [ 40.33346699234537, -76.34408436414576 ],
+      "colour" : "#E69F00"
+    }, {
+      "id" : "24",
+      "latlng" : [ 40.62284268702995, -75.68212192985769 ],
+      "colour" : "#000000"
+    }, {
+      "id" : "25",
+      "latlng" : [ 40.38404863024938, -75.29993728670185 ],
+      "colour" : "#000000"
+    }, {
+      "id" : "26",
+      "latlng" : [ 40.70136885224167, -75.93069714591877 ],
+      "colour" : "#0072B2"
+    }, {
+      "id" : "27",
+      "latlng" : [ 40.76855658236372, -76.44404779362462 ],
+      "colour" : "#0072B2"
+    }, {
+      "id" : "28",
+      "latlng" : [ 39.900464713640574, -75.83043059538464 ],
+      "colour" : "#E69F00"
+    }, {
+      "id" : "29",
+      "latlng" : [ 40.01719653700809, -76.60762207105441 ],
+      "colour" : "#009E73"
+    }, {
+      "id" : "30",
+      "latlng" : [ 40.184488114830856, -75.57928328405006 ],
+      "colour" : "#CC79A7"
+    }, {
+      "id" : "31",
+      "latlng" : [ 40.20665080946525, -76.60457468021626 ],
+      "colour" : "#009E73"
+    }, {
+      "id" : "32",
+      "latlng" : [ 40.54458939935359, -75.62465553903024 ],
+      "colour" : "#000000"
+    }, {
+      "id" : "33",
+      "latlng" : [ 40.11181868110524, -75.40504593343209 ],
+      "colour" : "#CC79A7"
+    }, {
+      "id" : "34",
+      "latlng" : [ 40.14494977716075, -75.70170628634976 ],
+      "colour" : "#CC79A7"
+    }, {
+      "id" : "35",
+      "latlng" : [ 40.2359553274641, -75.40863401864505 ],
+      "colour" : "#CC79A7"
+    }, {
+      "id" : "36",
+      "latlng" : [ 39.88028366196594, -76.83410931434597 ],
+      "colour" : "#009E73"
+    }, {
+      "id" : "37",
+      "latlng" : [ 39.77908687782919, -76.10254334586338 ],
+      "colour" : "#E69F00"
+    }, {
+      "id" : "38",
+      "latlng" : [ 40.01707146529095, -75.52490916810083 ],
+      "colour" : "#CC79A7"
+    }, {
+      "id" : "39",
+      "latlng" : [ 40.035295881246505, -74.95947518864683 ],
+      "colour" : "#CC79A7"
+    }, {
+      "id" : "40",
+      "latlng" : [ 39.960445474653596, -75.22699395363955 ],
+      "colour" : "#CC79A7"
+    }, {
+      "id" : "41",
+      "latlng" : [ 40.197150433885646, -75.54553234032167 ],
+      "colour" : "#CC79A7"
+    }, {
+      "id" : "42",
+      "latlng" : [ 39.84053381059538, -75.27169295135805 ],
+      "colour" : "#CC79A7"
+    }, {
+      "id" : "43",
+      "latlng" : [ 40.58231606020249, -76.46099157718749 ],
+      "colour" : "#0072B2"
+    }, {
+      "id" : "44",
+      "latlng" : [ 40.01660972013479, -76.51966403388072 ],
+      "colour" : "#009E73"
+    }, {
+      "id" : "45",
+      "latlng" : [ 40.65940370237064, -76.3471436688401 ],
+      "colour" : "#0072B2"
+    }, {
+      "id" : "46",
+      "latlng" : [ 40.37363996981607, -76.04602511432608 ],
+      "colour" : "#E69F00"
+    }, {
+      "id" : "47",
+      "latlng" : [ 40.28087018451377, -76.06728599284484 ],
+      "colour" : "#D55E00"
+    }, {
+      "id" : "48",
+      "latlng" : [ 40.64733472296068, -75.63884153295304 ],
+      "colour" : "#000000"
+    }, {
+      "id" : "49",
+      "latlng" : [ 40.75587528372913, -75.57140309866654 ],
+      "colour" : "#0072B2"
+    }, {
+      "id" : "50",
+      "latlng" : [ 40.54695301012003, -76.36971510859 ],
+      "colour" : "#0072B2"
+    }, {
+      "id" : "51",
+      "latlng" : [ 40.45365155493481, -76.1696301413173 ],
+      "colour" : "#D55E00"
+    }, {
+      "id" : "52",
+      "latlng" : [ 40.476560629882655, -76.03993907684848 ],
+      "colour" : "#D55E00"
+    }, {
+      "id" : "53",
+      "latlng" : [ 40.28174398979459, -76.5994966595117 ],
+      "colour" : "#E69F00"
+    }, {
+      "id" : "54",
+      "latlng" : [ 40.38994162045567, -76.22461769637182 ],
+      "colour" : "#D55E00"
+    }, {
+      "id" : "55",
+      "latlng" : [ 40.316770111690964, -75.61849968433866 ],
+      "colour" : "#CC79A7"
+    } ],
+    "homes" : [ {
+      "id" : "1",
+      "latlng" : [ 40.062142186054544, -76.82989455982668 ]
+    }, {
+      "id" : "2",
+      "latlng" : [ 40.76209146149724, -75.20264545294424 ]
+    }, {
+      "id" : "3",
+      "latlng" : [ 40.22333716706126, -75.84588681726002 ]
+    }, {
+      "id" : "4",
+      "latlng" : [ 40.516761428382175, -75.02625642550558 ]
+    }, {
+      "id" : "5",
+      "latlng" : [ 39.87768478827255, -75.33976657041845 ]
+    }, {
+      "id" : "6",
+      "latlng" : [ 39.822967452068845, -76.05891766057759 ]
+    } ],
+    "routes" : [ {
+      "colour" : "#009E73",
+      "latlngs" : [ [ 40.062142186054544, -76.82989455982668 ], [ 40.311629722161314, -76.81754092392403 ], [ 40.107171652988875, -76.65828746053856 ], [ 40.01660972013479, -76.51966403388072 ], [ 39.83533134071455, -76.42432636292223 ], [ 39.92357511766275, -76.50522719654359 ], [ 40.01719653700809, -76.60762207105441 ], [ 39.941154208872746, -76.63086894597632 ], [ 39.88028366196594, -76.83410931434597 ], [ 40.20665080946525, -76.60457468021626 ], [ 40.062142186054544, -76.82989455982668 ] ]
+    }, {
+      "colour" : "#0072B2",
+      "latlngs" : [ [ 40.76209146149724, -75.20264545294424 ], [ 40.75587528372913, -75.57140309866654 ], [ 40.70136885224167, -75.93069714591877 ], [ 40.76855658236372, -76.44404779362462 ], [ 40.65940370237064, -76.3471436688401 ], [ 40.54695301012003, -76.36971510859 ], [ 40.58231606020249, -76.46099157718749 ], [ 40.708304774013016, -76.32878439218923 ], [ 40.68535159966817, -76.29895708556664 ], [ 40.76021717022356, -76.20121186956843 ], [ 40.695631831952305, -75.80858117767238 ], [ 40.76209146149724, -75.20264545294424 ] ]
+    }, {
+      "colour" : "#D55E00",
+      "latlngs" : [ [ 40.22333716706126, -75.84588681726002 ], [ 40.38888449136959, -75.67620348086285 ], [ 40.35959274000729, -75.74732900005077 ], [ 40.476560629882655, -76.03993907684848 ], [ 40.38994162045567, -76.22461769637182 ], [ 40.369453747576685, -75.90616049678165 ], [ 40.333599831522896, -75.92976408916294 ], [ 40.28087018451377, -76.06728599284484 ], [ 40.45365155493481, -76.1696301413173 ], [ 40.22333716706126, -75.84588681726002 ] ]
+    }, {
+      "colour" : "#000000",
+      "latlngs" : [ [ 40.516761428382175, -75.02625642550558 ], [ 40.61874158464826, -75.07658771957155 ], [ 40.38404863024938, -75.29993728670185 ], [ 40.54458939935359, -75.62465553903024 ], [ 40.62284268702995, -75.68212192985769 ], [ 40.64733472296068, -75.63884153295304 ], [ 40.50601582808854, -75.49276077135329 ], [ 40.58649494696863, -75.08446988332038 ], [ 40.516761428382175, -75.02625642550558 ] ]
+    }, {
+      "colour" : "#CC79A7",
+      "latlngs" : [ [ 39.87768478827255, -75.33976657041845 ], [ 40.197150433885646, -75.54553234032167 ], [ 40.184488114830856, -75.57928328405006 ], [ 40.01707146529095, -75.52490916810083 ], [ 40.03555053626361, -75.11158398521115 ], [ 40.035295881246505, -74.95947518864683 ], [ 39.84053381059538, -75.27169295135805 ], [ 39.960445474653596, -75.22699395363955 ], [ 40.14494977716075, -75.70170628634976 ], [ 40.2359553274641, -75.40863401864505 ], [ 40.316770111690964, -75.61849968433866 ], [ 40.11181868110524, -75.40504593343209 ], [ 39.87768478827255, -75.33976657041845 ] ]
+    }, {
+      "colour" : "#E69F00",
+      "latlngs" : [ [ 39.822967452068845, -76.05891766057759 ], [ 39.900464713640574, -75.83043059538464 ], [ 39.87428674281021, -76.22940630744704 ], [ 40.143686166316385, -76.04807110496832 ], [ 40.37363996981607, -76.04602511432608 ], [ 40.33346699234537, -76.34408436414576 ], [ 40.36532300074279, -76.38315252015386 ], [ 40.23859619154949, -76.35494465287347 ], [ 40.28174398979459, -76.5994966595117 ], [ 39.781953045014454, -76.45598685645876 ], [ 39.77908687782919, -76.10254334586338 ], [ 39.822967452068845, -76.05891766057759 ] ]
+    } ]
+  },
+  "journal" : [ {
+    "t" : 1791552525150,
+    "type" : "page-load",
+    "url" : "/"
+  }, {
+    "t" : 1791552531119,
+    "type" : "click",
+    "target" : "button#solveButton \"Solve\"",
+    "resultingLabel" : "Solve",
+    "visibleAfter" : false
+  }, {
+    "t" : 1791552535277,
+    "type" : "click",
+    "target" : "button#stopSolvingButton \"Stop solving\"",
+    "resultingLabel" : "Stop solving",
+    "visibleAfter" : false
+  }, {
+    "t" : 1791552543916,
+    "type" : "click",
+    "target" : "map",
+    "latlng" : [ 40.74441202413741, -77.32999408775245 ]
+  }, {
+    "t" : 1791552545720,
+    "type" : "click",
+    "target" : "button \"Close\"",
+    "resultingLabel" : "",
+    "visibleAfter" : false
+  }, {
+    "t" : 1791553508789,
+    "type" : "zoom",
+    "target" : "div#map \"+ − Leaflet | © OpenStreetMap contributo\"",
+    "deltaY" : 400,
+    "durationMs" : 468,
+    "after" : {
+      "center" : [ 39.967281275179495, -76.63045974652587 ],
+      "zoom" : 8
+    }
+  }, {
+    "t" : 1791553541417,
+    "type" : "page-load",
+    "url" : "/"
+  }, {
+    "t" : 1791553543083,
+    "type" : "click",
+    "target" : "button#solveButton \"Solve\"",
+    "resultingLabel" : "Solve",
+    "visibleAfter" : false
+  }, {
+    "t" : 1791553545744,
+    "type" : "click",
+    "target" : "button#stopSolvingButton \"Stop solving\"",
+    "resultingLabel" : "Stop solving",
+    "visibleAfter" : false
+  }, {
+    "t" : 1791553547362,
+    "type" : "click",
+    "target" : "map",
+    "latlng" : [ 40.602834698158546, -75.06049125483445 ]
+  }, {
+    "t" : 1791553549481,
+    "type" : "click",
+    "target" : "a \"×\"",
+    "resultingLabel" : "×",
+    "visibleAfter" : false
+  }, {
+    "t" : 1791553549981,
+    "type" : "zoom",
+    "target" : "div#map \"+ − Leaflet | © OpenStreetMap contributo\"",
+    "deltaY" : -400,
+    "durationMs" : 423,
+    "after" : {
+      "center" : [ 40.54562417728302, -75.23338286825738 ],
+      "zoom" : 11
+    }
+  }, {
+    "t" : 1791553551554,
+    "type" : "zoom",
+    "target" : "div#map \"+ − Leaflet | © OpenStreetMap contributo\"",
+    "deltaY" : -400,
+    "durationMs" : 460,
+    "after" : {
+      "center" : [ 40.597536957947874, -75.11243423968553 ],
+      "zoom" : 13
+    }
+  }, {
+    "t" : 1791553552378,
+    "type" : "zoom",
+    "target" : "div#map \"+ − Leaflet | © OpenStreetMap contributo\"",
+    "deltaY" : -500,
+    "durationMs" : 486,
+    "after" : {
+      "center" : [ 40.6105982239319, -75.08179551492569 ],
+      "zoom" : 15
+    }
+  }, {
+    "t" : 1791553553143,
+    "type" : "zoom",
+    "target" : "div#map \"+ − Leaflet | © OpenStreetMap contributo\"",
+    "deltaY" : -300,
+    "durationMs" : 402,
+    "after" : {
+      "center" : [ 40.61376754506588, -75.0775243013638 ],
+      "zoom" : 16
+    }
+  }, {
+    "t" : 1791553554035,
+    "type" : "zoom",
+    "target" : "div#map \"+ − Leaflet | © OpenStreetMap contributo\"",
+    "deltaY" : -500,
+    "durationMs" : 469,
+    "after" : {
+      "center" : [ 40.617066907499414, -75.076633424799 ],
+      "zoom" : 18
+    }
+  }, {
+    "t" : 1791553554978,
+    "type" : "click",
+    "target" : "map",
+    "latlng" : [ 40.618368936422115, -75.07623610399246 ]
+  }, {
+    "t" : 1791553554610,
+    "type" : "drag",
+    "target" : "div#map \"+ − Leaflet | © OpenStreetMap contributo\"",
+    "dx" : 51,
+    "dy" : 217,
+    "durationMs" : 427,
+    "after" : {
+      "center" : [ 40.61795076156555, -75.07690529056312 ],
+      "zoom" : 18
+    }
+  }, {
+    "t" : 1791553555260,
+    "type" : "zoom",
+    "target" : "div#map \"+ − Leaflet | © OpenStreetMap contributo\"",
+    "deltaY" : -400,
+    "durationMs" : 430,
+    "after" : {
+      "center" : [ 40.61825638687796, -75.07661958549382 ],
+      "zoom" : 19
+    }
+  }, {
+    "t" : 1791553556197,
+    "type" : "click",
+    "target" : "map",
+    "latlng" : [ 40.6187279758458, -75.07636548777846 ]
+  }, {
+    "t" : 1791553555905,
+    "type" : "drag",
+    "target" : "div#map \"+ − Leaflet | © OpenStreetMap contributo\"",
+    "dx" : 36,
+    "dy" : 126,
+    "durationMs" : 340,
+    "after" : {
+      "center" : [ 40.61851278515945, -75.0767161801778 ],
+      "zoom" : 19
+    }
+  }, {
+    "t" : 1791553556450,
+    "type" : "zoom",
+    "target" : "div#map \"+ − Leaflet | © OpenStreetMap contributo\"",
+    "deltaY" : -400,
+    "durationMs" : 418,
+    "after" : {
+      "center" : [ 40.61851278515945, -75.0767161801778 ],
+      "zoom" : 19
+    }
+  }, {
+    "t" : 1791553558523,
+    "type" : "click",
+    "target" : "map",
+    "latlng" : [ 40.61873204563874, -75.07659087537444 ]
+  }, {
+    "t" : 1791553557628,
+    "type" : "drag",
+    "target" : "div#map \"+ − Leaflet | © OpenStreetMap contributo\"",
+    "dx" : -46,
+    "dy" : 27,
+    "durationMs" : 944,
+    "after" : {
+      "center" : [ 40.61856772752031, -75.07659543682281 ],
+      "zoom" : 19
+    }
+  } ],
+  "page" : {
+    "url" : "http://localhost:8080/#close",
+    "userAgent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36",
+    "viewport" : [ 1512, 770 ],
+    "devicePixelRatio" : 1.25,
+    "appClockAtFreeze" : 670587.0999999996,
+    "capturedAt" : "2026-10-09T13:56:51.830Z"
+  },
+  "build" : {
+    "commit" : "4f2d159c16fbab1ac474ca71ffe170cee3b9709a",
+    "branch" : "sightline-validation",
+    "dirty" : false,
+    "versions" : {
+      "java" : "23.0.2",
+      "timefoldSolver" : "2.7.0",
+      "quarkus" : "3.39.4",
+      "jackson" : "2.22.2"
+    },
+    "caches" : {
+      "drivingTimeMatrix" : {
+        "calculator" : "HaversineDrivingTimeCalculator",
+        "lifecycle" : "recomputed from scratch for every deserialized VehicleRoutePlan; no persistent cache",
+        "averageSpeedKmph" : 50
+      },
+      "persistentStores" : "none: solver jobs live in an in-memory map of VehicleRoutePlanResource"
+    }
+  },
+  "inputs" : {
+    "demoData" : {
+      "seed" : 2,
+      "note" : "generator seed; dates are relative to the generation day (tomorrow), so the state's absolute times, not the seed, are the reproducible input",
+      "id" : "PHILADELPHIA"
+    },
+    "solver" : {
+      "solver.termination.spent-limit" : "30s",
+      "solver.termination.unimproved-spent-limit" : "(default)",
+      "solver.termination.best-score-limit" : "(default)",
+      "solver.environment-mode" : "(default)",
+      "solver.move-thread-count" : "(default)",
+      "solver.random-seed" : "(default)",
+      "solver-manager.parallel-solver-count" : "AUTO",
+      "buildTimeEnvironmentMode" : "null",
+      "randomSeed" : "not set: Timefold's fixed default seed is used (reproducible environment modes)",
+      "constraintProvider" : "org.acme.vehiclerouting.solver.VehicleRoutingConstraintProvider",
+      "reproducibility" : "seeded, but terminated by wall-clock time or by the user, so re-running the solver does not necessarily reach the same assignment; the state holds the assignment itself"
+    }
+  },
+  "backend" : {
+    "windowMinutes" : 10.0,
+    "enabled" : true,
+    "jobs" : [ ],
+    "events" : [ ],
+    "eventsTruncated" : false,
+    "eventCap" : 200
+  },
+  "objects" : {
+    "visit:16" : {
+      "type" : "visit",
+      "name" : "Gus Jones",
+      "location" : [ 40.61874158464826, -75.07658771957155 ],
+      "demand" : 1,
+      "timeWindow" : [ "2026-10-10T08:00", "2026-10-10T12:00" ],
+      "serviceMinutes" : 20,
+      "vehicle" : "4",
+      "routeIndex" : 0,
+      "previousVisit" : null,
+      "arrivalTime" : "2026-10-10T07:44:32",
+      "startServiceTime" : "2026-10-10T08:00",
+      "departureTime" : "2026-10-10T08:20",
+      "drivingSecondsFromPrevious" : 872,
+      "lateMinutes" : 0,
+      "placedBy" : {
+        "placedBy" : "Local Search",
+        "bestSolutionEvent" : 17,
+        "msAfterSubmit" : 723,
+        "assignment" : "4#0",
+        "previousAssignment" : "4#4",
+        "jobId" : "93d4c323-529e-4205-9afd-55aba9dd0623"
+      },
+      "constraintImpacts" : [ ]
+    },
+    "_recomputedScore" : "0hard/0medium/-99897soft"
+  },
+  "status" : "done",
+  "name" : "finding-20261009-155741",
+  "created" : "2026-10-09T15:57:41.276554500+02:00",
+  "verdict" : "fixed",
+  "closingNote" : "demo and clicked locations snapped onto the nearest road via OSRM; popup shows the delta; regression VehicleRouteDemoRoadSnapTest",
+  "commit" : "848db33",
+  "closed" : "2026-10-09T16:20:56.710141700+02:00"
+}
