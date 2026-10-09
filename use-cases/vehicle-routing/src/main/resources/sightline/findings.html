@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Findings - Vehicle Routing (dev)</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/webjars/font-awesome/css/all.min.css">
+  <style>
+    body { background: #f6f6f8; }
+    .finding { display: grid; grid-template-columns: 200px 1fr; gap: 14px; padding: 12px; background: #fff;
+      border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.12); margin-bottom: 12px; }
+    .finding.done { opacity: .78; }
+    .finding img.thumb { width: 200px; cursor: zoom-in; border: 1px solid #ccc; border-radius: 4px; }
+    .finding .note { font-size: 1.05rem; }
+    .finding .meta { color: #666; font-size: .85rem; }
+    #lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.88); display: none; z-index: 1000;
+      align-items: center; justify-content: center; cursor: zoom-out; }
+    #lightbox img { max-width: 96vw; max-height: 96vh; }
+    @media (max-width: 600px) { .finding { grid-template-columns: 1fr; } .finding img.thumb { width: 100%; } }
+  </style>
+</head>
+<body>
+<div class="container py-3">
+  <div class="d-flex align-items-center mb-3 gap-3">
+    <h1 class="h3 m-0">Findings</h1>
+    <span class="text-muted small">dev build only; index generated from the sidecars</span>
+    <a class="btn btn-outline-primary ms-auto" href="/">Back to the app</a>
+  </div>
+  <div id="error" class="alert alert-danger d-none"></div>
+  <div id="list"></div>
+</div>
+<div id="lightbox"><img alt="finding image"></div>
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/sightline/assets/findings.js"></script>
+</body>
+</html>
