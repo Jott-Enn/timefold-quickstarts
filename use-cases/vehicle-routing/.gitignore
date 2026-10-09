@@ -1,0 +1,5 @@
+# Sightline findings: screenshots and sidecars stay local (they grow fast and may show data that does not belong
+# in a repository; keep them in the project's backup). The generated indexes are versioned.
+/docs/findings/*
+!/docs/findings/index.md
+!/docs/findings/index.json
